@@ -8,3 +8,7 @@ __pycache__/
 
 # Ignore SQLite DB if you want
 *.sqlite3
+
+bin/
+*.exe
+.env
