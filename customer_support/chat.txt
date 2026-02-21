@@ -1,0 +1,13 @@
+Sarah (Company X): Hi Mike, thanks for taking the time. I saw you were looking at our integration features. How are things going with your current CRM?
+Mike: Honestly, it's fine. We use spreadsheets mostly. It's free, and I don't really have time to train my team on something new.
+Sarah (Company X): I totally understand. Transitioning tools is a headache. But usually, when I hear "spreadsheets," it means you're spending more time cleaning data than selling. How many hours a week do you think you lose to data entry?
+Mike: Probably 5-10 hours, honestly. But it's just too expensive to switch.
+Sarah (Company X): What if I told you that our automation feature saves the average user 8 hours a week? That pays for the software in the first month.
+Mike: Maybe. But I don't think it integrates with our email system.
+Sarah (Company X): It does, actually. We have a native integration for [Email Tool]. I can show you in a 5-minute screen share right now if you have a second?
+Mike: Okay, 5 minutes. But no promises.
+Sarah (Company X): *shares screen* As you can see, when you click here, it populates the client data automatically...
+ Mike: Wow, that is actually faster.
+Sarah (Company X): It's a game-changer. Let’s get you on the Pro plan so you can automate those follow-ups, too. Does that work?
+Mike: Send me the invoice, let's try it for a month.
+Sarah (Company X): Perfect. Invoice sent. I'll also send a calendar link for your onboarding session. Welcome aboard, Mike!

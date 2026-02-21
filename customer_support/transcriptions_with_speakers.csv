@@ -1,0 +1,43 @@
+speaker,text,start,end
+SPEAKER_01,"Thank you for calling Martha's Flores, Tell Miss History.",0.82,3.43
+SPEAKER_00,"Hello, I'd like to order flowers, and I think you have what I'm looking for.",3.99,7.27
+SPEAKER_01,I'd be happy to take care of your order.,7.87,9.43
+SPEAKER_01,"May have your name, please.",9.47,10.65
+SPEAKER_00,Brando Thomas.,11.21,12.03
+SPEAKER_01,"Brando Thomas, can you spell that for me?",12.68,14.98
+SPEAKER_00,"Brando, on A-N-B-A-L-L.",15.64,19.7
+SPEAKER_00,"Provide D-H-O, N-A-N.",19.72,22.08
+SPEAKER_01,"Thank you for that information, Randle.",22.86,24.43
+SPEAKER_01,May have your home or office number area code first.,24.47,27.51
+SPEAKER_00,Very good for O-9.,27.53,30.29
+SPEAKER_00,86508.,30.86,33.38
+SPEAKER_01,That's 409-865088.,34.42,35.75
+SPEAKER_01,Do you have the facts?,36.99,39.25
+SPEAKER_01,Number or email address?,39.33,40.67
+SPEAKER_00,Email is Randall.,41.51,42.55
+SPEAKER_00,It's a dog's daughter.,43.17,44.03
+SPEAKER_00,That's gmail.com.,44.85,47.08
+SPEAKER_01,Randall.Thomas at gmail.com.,47.1,50.18
+SPEAKER_01,May have your shipping address?,50.2,51.7
+SPEAKER_00,6800.,51.72,53.0
+SPEAKER_01,Okay.,53.44,53.84
+SPEAKER_00,Badger's Avenue.,54.47,55.3
+SPEAKER_00,"So, my Texas zip code.",56.31,59.03
+SPEAKER_00,"7, 7, 7, 0, state.",59.35,61.03
+SPEAKER_01,"Glad is Avenue, Beaumont, Texas, zip code 7, 7, 7, 0, 6.",61.73,66.47
+SPEAKER_01,Thank you for the information.,66.94,68.2
+SPEAKER_01,What products are you interested in purchasing?,68.54,70.56
+SPEAKER_00,"Red roses, probably a dozen.",71.38,74.14
+SPEAKER_01,"One dozen of red roses, do you want long stems?",74.16,76.69
+SPEAKER_00,They're sure.,76.83,77.27
+SPEAKER_01,"All right, Randall.",77.85,78.79
+SPEAKER_01,Let me produce the order.,79.09,80.19
+SPEAKER_01,"One moment, please.",80.31,81.13
+SPEAKER_00,Okay.,82.89,82.99
+SPEAKER_01,"Randall, you're ordering one dozen long-standing red roses to total amount of your order is 40 dollars, and it will be shipped to your address within 24 hours.",85.17,93.8
+SPEAKER_00,We're in 24 hours.,95.08,98.17
+SPEAKER_01,Is there anything else I can help you with?,99.07,101.93
+SPEAKER_00,"That's all for now, thank you.",102.85,104.47
+SPEAKER_01,"No problem, Randall.",104.5,105.52
+SPEAKER_01,Thank you for calling Martha's flowers.,105.54,107.06
+SPEAKER_01,Have a nice day.,107.12,108.0
