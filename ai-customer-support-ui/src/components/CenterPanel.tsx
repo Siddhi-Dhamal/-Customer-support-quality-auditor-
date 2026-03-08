@@ -79,8 +79,8 @@ const stats: StatCard[] = [
   const fetchHistory = async () => {
     try {
       const [audioRes, textRes] = await Promise.all([
-        fetch("http://localhost:8000/history").catch(() => null), 
-        fetch("http://localhost:8001/history").catch(() =>null),
+        fetch("https://auraq-ai-customer-quality-auditor-production.up.railway.app/history").catch(() => null), 
+        fetch("https://upbeat-essence-production-929d.up.railway.app/history").catch(() =>null),
       ]); 
       const audioData=audioRes?.ok ? await audioRes.json() :[];
       const textData=textRes?.ok ? await textRes.json() : []; 
@@ -107,8 +107,8 @@ const stats: StatCard[] = [
     setLoading(true);
     try {
       const endpoint = source === "audio"
-        ? "http://localhost:8000/get-transcript?t=" + Date.now()
-        : "http://localhost:8001/get-text-transcript?t=" + Date.now();
+        ? "https://auraq-ai-customer-quality-auditor-production.up.railway.app/get-transcript?t=" + Date.now()
+        : "https://upbeat-essence-production-929d.up.railway.app/get-text-transcript?t=" + Date.now();
       const res  = await fetch(endpoint);
       const data = await res.json();
       if (data && data.length > 0) {
@@ -125,7 +125,7 @@ const stats: StatCard[] = [
   // ── Fetch detailed analysis charts data ──
 const fetchAnalysisData = async () => {
     try {
-      const res = await fetch("http://localhost:8003/get-quality-scores?t=" + Date.now());
+      const res = await fetch("https://charming-flexibility-production.up.railway.app/get-quality-scores?t=" + Date.now());
       if (res.ok) {
         const json = await res.json();
         // Only update if actual scores exist — never overwrite good scores with zeros
@@ -146,7 +146,7 @@ const runQualityScoring = async (file: File) => {
 
       if (isAudio) {
         await new Promise(resolve => setTimeout(resolve, 10000));
-        const transcriptRes  = await fetch("http://localhost:8000/get-transcript?t=" + Date.now());
+        const transcriptRes  = await fetch("https://auraq-ai-customer-quality-auditor-production.up.railway.app/get-transcript?t=" + Date.now());
         const transcriptData = await transcriptRes.json();
         if (!transcriptData || transcriptData.length === 0) return;
         const text = transcriptData
@@ -160,7 +160,7 @@ const runQualityScoring = async (file: File) => {
       } else {
         // For txt/csv: wait for upload-text to finish, then read transcript
         await new Promise(resolve => setTimeout(resolve, 3000));
-        const transcriptRes  = await fetch("http://localhost:8001/get-text-transcript?t=" + Date.now());
+        const transcriptRes  = await fetch("https://upbeat-essence-production-929d.up.railway.app/get-text-transcript?t=" + Date.now());
         const transcriptData = await transcriptRes.json();
         if (!transcriptData || transcriptData.length === 0) {
           // Fallback: read file directly
@@ -178,7 +178,7 @@ const runQualityScoring = async (file: File) => {
       }
       
       console.log("Sending to scoring server — formData keys:", [...formData.keys()]);
-      const analyzeRes = await fetch("http://localhost:8003/analyze-quality", {
+      const analyzeRes = await fetch("https://charming-flexibility-production.up.railway.app/analyze-quality", {
         method: "POST",
         body: formData,
       });
@@ -250,7 +250,7 @@ const runQualityScoring = async (file: File) => {
     const fetchQualityScores = async () => {
         setScoresLoading(true);
         try {
-          const res = await fetch("http://localhost:8003/get-quality-scores?t=" + Date.now());
+          const res = await fetch("https://charming-flexibility-production.up.railway.app/get-quality-scores?t=" + Date.now());
           if (res.ok) {
             const data = await res.json();
             if (data.empathy > 0 || data.compliance > 0 || data.resolution > 0) {
@@ -296,7 +296,7 @@ const runQualityScoring = async (file: File) => {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const endpoint = file.type.startsWith("audio/") ? "http://localhost:8000/upload" : "http://localhost:8001/upload-text";
+      const endpoint = file.type.startsWith("audio/") ? "https://auraq-ai-customer-quality-auditor-production.up.railway.app/upload" : "https://upbeat-essence-production-929d.up.railway.app/upload-text";
       const res = await fetch(endpoint, { method: "POST", body: formData });
       if (res.ok) {
         setStatus("Analyzing...");
@@ -611,8 +611,8 @@ const runQualityScoring = async (file: File) => {
     const clearHistory = async () => {
       try {
         await Promise.all([
-          fetch("http://localhost:8000/clear-history", { method: "POST" }).catch(() => null),
-          fetch("http://localhost:8001/clear-history", { method: "POST" }).catch(() => null),
+          fetch("https://auraq-ai-customer-quality-auditor-production.up.railway.app/clear-history", { method: "POST" }).catch(() => null),
+          fetch("https://upbeat-essence-production-929d.up.railway.app/clear-history", { method: "POST" }).catch(() => null),
         ]);
         setHistory([]);
         // Tell Dashboard to clear download modal list

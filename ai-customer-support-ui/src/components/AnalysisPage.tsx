@@ -34,7 +34,7 @@ const AnalysisPage = () => {
 
   const fetchDetailedScores = async () => {
     try {
-      const res = await fetch(`http://localhost:8002/get-quality-scores?t=${Date.now()}`);
+      const res = await fetch(`https://caring-bravery-production.up.railway.app/get-quality-scores?t=${Date.now()}`);
       if (res.ok) {
         const json = await res.json();
         setData(json);
