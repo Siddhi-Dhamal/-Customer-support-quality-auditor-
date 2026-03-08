@@ -83,7 +83,7 @@ async def process_upload(file: UploadFile = File(...)):
         print(f"DEBUG: Processing {file.filename}...")
         
         # ONE call to Deepgram handles everything
-        response = dg_client.listen.rest.v("1").transcribe_file(payload, options)
+        response = dg_client.listen.prerecorded.v("1").transcribe_file(payload, options)
         
         # 1. Get the Instant Summary
         # Note: Short summary is usually better for UI panels
