@@ -1,0 +1,4 @@
+audio: uvicorn app:app --host 0.0.0.0 --port 8000
+text: uvicorn chat_app:app --host 0.0.0.0 --port 8001 
+emotion_satisfaction: uvicorn Customer_Emotion_Satisfaction:app --host 0.0.0.0 --port 8002 
+scoring: uvicorn scoring_server:app --host 0.0.0.0 --port 8003
