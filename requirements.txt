@@ -9,3 +9,4 @@ deepgram-sdk
 python-multipart
 aiofiles
 httpx
+websockets
