@@ -93,7 +93,7 @@ function IconNav({ activePage, setActivePage, onDownloadClick }: IconNavProps) {
       </div>
 
       {/* Nav Icons */}
-            <div className="flex flex-col gap-1 flex-1 w-full px-3">
+            <div className="flex flex-row md:flex-col gap-1 flex-1 w-full px-3">
               {navItems.map(({ id, icon: Icon, label }) => (
                 <button
                   key={id}

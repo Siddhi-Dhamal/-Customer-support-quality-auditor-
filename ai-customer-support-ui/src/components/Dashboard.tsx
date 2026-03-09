@@ -479,7 +479,7 @@ function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080808] text-white font-sans flex h-screen overflow-hidden">
+    <div className="min-h-screen bg-[#080808] text-white font-sans flex flex-col md:flex-row h-screen overflow-hidden">
       <IconNav
         activePage={activePage}
         setActivePage={setActivePage}
@@ -491,7 +491,7 @@ function Dashboard() {
         onReportData={(data) => setReportData(prev => ({ ...prev, ...data }))}
       />
       {fileUploaded && (
-        <div style={{ display: activePage === 'home' ? 'flex' : 'none' }}>
+        <div className="hidden lg:flex" style={{ display: activePage === 'home' ? '' : 'none' }}>
           <RightSidebar onReportData={(data) => setReportData(prev => ({ ...prev, ...data }))} />
         </div>
       )}
@@ -499,7 +499,7 @@ function Dashboard() {
       {/* ── Download Modal ── */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="bg-[#0b1224] border border-white/10 rounded-3xl shadow-2xl w-[480px] max-h-[80vh] flex flex-col overflow-hidden">
+          <div className="bg-[#0b1224] border border-white/10 rounded-3xl shadow-2xl w-[90vw] md:w-[480px] max-h-[80vh] flex flex-col overflow-hidden">
 
             {/* Modal Header */}
             <div className="flex items-center justify-between p-6 border-b border-white/5">
