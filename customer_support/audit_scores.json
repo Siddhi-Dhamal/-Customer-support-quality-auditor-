@@ -1,0 +1,70 @@
+{
+    "empathy": 7,
+    "compliance": 8,
+    "resolution": 8,
+    "reasoning": "Overall, the call quality was good, with the agent following the required steps and resolving the customer's issue. The agent showed empathy by using the customer's name and acknowledging their problem. However, there were a few instances where the agent could have been more personalized in their approach, such as when asking for the customer's shipping address. The agent followed all the required compliance steps, including verification and process, but could have been more proactive in confirming the customer's information. The issue was fully resolved, and the customer was satisfied with the outcome. The agent's key strength was their ability to follow the required steps, while their key weakness was their lack of personalized approach. Coaching recommendation: Encourage the agent to be more personalized in their approach and to proactively confirm customer information.",
+    "empathy_timeline": [
+        {
+            "stage": "Opening",
+            "score": 8
+        },
+        {
+            "stage": "Mid-Call",
+            "score": 7
+        },
+        {
+            "stage": "Issue",
+            "score": 8
+        },
+        {
+            "stage": "Closing",
+            "score": 8
+        }
+    ],
+    "compliance_steps": [
+        {
+            "step": "Greeting",
+            "score": 9
+        },
+        {
+            "step": "Verification",
+            "score": 9
+        },
+        {
+            "step": "Process",
+            "score": 8
+        },
+        {
+            "step": "Closing",
+            "score": 9
+        }
+    ],
+    "resolution_progress": [
+        {
+            "stage": "Issue Raised",
+            "score": 8
+        },
+        {
+            "stage": "Diagnosed",
+            "score": 8
+        },
+        {
+            "stage": "Action Taken",
+            "score": 8
+        },
+        {
+            "stage": "Resolved",
+            "score": 9
+        }
+    ],
+    "fairness_scores": {
+        "name_neutrality": 9,
+        "language_neutrality": 9,
+        "tone_consistency": 9,
+        "equal_effort": 8
+    },
+    "efficiency_score": 7,
+    "total_messages": 27,
+    "names_anonymized": [],
+    "bias_reduction_applied": true
+}

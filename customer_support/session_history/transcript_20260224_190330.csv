@@ -1,0 +1,30 @@
+speaker,text,start,end
+SPEAKER_00,"Thank you for calling Martha's flowers Thomas is see well, I'd like to order flowers and I think you have what I'm looking for",0.43,7.23
+SPEAKER_01,"I'd be happy to take care of your order may have your name, please",7.39,10.47
+SPEAKER_00,Randall Thomas,11.07,12.57
+SPEAKER_01,"Randall Thomas, can you spell that for me?",12.57,14.91
+SPEAKER_00,Randall,15.51,17.19
+SPEAKER_01,an,17.19,19.39
+SPEAKER_00,Thomas,19.39,20.79
+SPEAKER_01,th o man,20.79,22.47
+SPEAKER_00,Thank you for that information Randall may have your home or office number area code first,22.47,27.03
+SPEAKER_01,Eric or 409 then,27.35,29.67
+SPEAKER_00,866,31.07,32.19
+SPEAKER_01,5 0 8 8 that's 4 0 9 8 6 6 5 0 8 8,32.19,38.03
+SPEAKER_00,Do you have a fax number or email address?,38.03,40.51
+SPEAKER_01,email is Randall,41.19,43.19
+SPEAKER_00,Dot Thomas at gmail.com,43.39,46.11
+SPEAKER_01,Randall dot Thomas at gmail.com may have your shipping address,46.91,51.55
+SPEAKER_00,"6800 okay, baddest Avenue",52.39,55.19
+SPEAKER_01,"Bowmont, Texas",55.99,57.99
+SPEAKER_00,Zipcoded,58.27,60.19
+SPEAKER_01,"7706 gladdest Avenue, Bowmont, Texas zip code 7706",60.19,66.35
+SPEAKER_00,Thank you for the information. What products are you interested in purchasing?,66.59,70.51
+SPEAKER_01,Red roses probably it doesn't,70.95,72.95
+SPEAKER_00,"One dozen of red roses. Do you want long stems? Yes, sir. All right Randall. Let me process the order one moment, please",73.67,80.95
+SPEAKER_01,Okay,82.31,84.99
+SPEAKER_00,Randall you're ordering one dozen long-stemmed red roses the total amount of your order is $40 and it will be shipped to your,85.03,92.23
+SPEAKER_01,address within 24 hours,92.23,94.23
+SPEAKER_00,I was thinking to deliver my roses again within 24 hours,94.23,98.07
+SPEAKER_01,"Okay, no problem. Is there anything else I can help you with?",98.63,101.75
+SPEAKER_00,That's all for now thing. No problem Randall. Thank you for calling Martha's florist. Have a nice day,102.47,107.67

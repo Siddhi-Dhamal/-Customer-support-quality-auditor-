@@ -1,0 +1,14 @@
+speaker,text
+Speaker 01,"Thank you for calling TechSupport, my name is Sarah. How can I help you today?"
+Speaker 00,"Hi Sarah, I am having trouble logging into my account. It keeps saying invalid password."
+Speaker 01,I am sorry to hear that. Can I please have your registered email address?
+Speaker 00,"Sure, it is john.smith@email.com"
+Speaker 01,Thank you John. I can see your account here. It looks like your account was locked after multiple failed login attempts.
+Speaker 00,"Oh no, I really need access urgently. I have an important meeting in an hour."
+Speaker 01,I completely understand how urgent this is. I will unlock your account right now and send a password reset link to your email.
+Speaker 00,"That would be amazing, thank you so much!"
+Speaker 01,Done! I have unlocked your account and the reset link has been sent. Please check your inbox in the next 2 minutes.
+Speaker 00,"I got the email and I am back in. You are a lifesaver, thank you Sarah!"
+Speaker 01,You are very welcome! Is there anything else I can help you with today?
+Speaker 00,"No that is all. You were very helpful, have a great day!"
+Speaker 01,Thank you for calling TechSupport. Have a wonderful day goodbye!

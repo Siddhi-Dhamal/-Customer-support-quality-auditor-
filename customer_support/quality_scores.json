@@ -1,0 +1,16 @@
+{
+    "status": "success",
+    "source": "audio",
+    "total_lines_analyzed": 27,
+    "emotion_analysis": {
+        "emotion": "Satisfied",
+        "confidence": "90%",
+        "reason": "The customer completed their order smoothly and expressed thanks at the end of the call, indicating a positive experience."
+    },
+    "satisfaction_analysis": {
+        "score": "85",
+        "score_percentage": "85%",
+        "status": "Satisfied",
+        "reason": "The customer completed their request, received a clear summary of their order, and thanked the agent without expressing any complaints."
+    }
+}

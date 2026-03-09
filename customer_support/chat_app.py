@@ -24,15 +24,15 @@ SUMMARY_FILE = "text_summaries.csv"
 SUMMARIES_DIR=os.path.join(BASE_DIR,"file_summaries")
 os.makedirs(SUMMARIES_DIR,exist_ok=True)
 
-DEEPGRAM_API_KEY = os.getenv("DEEPGRAM_API_KEY").strip()
+DEEPGRAM_API_KEY = os.getenv("DEEPGRAM_API_KEY")
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    allow_credentials=False,
 )
 
 dg_client = DeepgramClient(DEEPGRAM_API_KEY)
@@ -41,13 +41,8 @@ dg_client = DeepgramClient(DEEPGRAM_API_KEY)
 
 def parse_chat_to_turns(text):
     """
-    Dynamically detects ANY speaker format:
-      - "John: Hi!"  /  "Sarah: Hello"
-      - "Human 1: Hi!"  /  "Human 2: Hello"
-      - "Agent: ..."  /  "Customer: ..."
-      - "Alice Johnson: ..."  /  "Bob Smith: ..."
-      - Line-by-line OR inline (all on one line)
-    No hardcoded names needed.
+    Dynamically detects ANY speaker format — no hardcoded names.
+    Handles multi-word names, single-word names, numbered speakers, etc.
     """
     import re
     from collections import Counter
@@ -55,33 +50,39 @@ def parse_chat_to_turns(text):
     lines = text.strip().split('\n')
     turns = []
 
+    # Pattern: "Speaker Name: message" — greedy match for name, stops at first colon
+    speaker_line = re.compile(r'^([A-Za-z][A-Za-z0-9_ ]{1,40}?)\s*:\s*(.+)$')
+
     if len(lines) > 1:
-        # Line-by-line format: each line starts with "Speaker: message"
-        speaker_line = re.compile(r'^([A-Za-z][A-Za-z0-9_ ]{0,30}?)\s*:\s*(.+)$')
         for line in lines:
             line = line.strip()
+            if not line:
+                continue
             m = speaker_line.match(line)
             if m:
-                turns.append({"speaker": m.group(1).strip(), "text": m.group(2).strip()})
+                name = m.group(1).strip()
+                msg  = m.group(2).strip()
+                if name and msg:
+                    turns.append({"speaker": name, "text": msg})
 
+    # Fallback: inline format — everything on one block of text
     if not turns:
-        # Inline format: "Name: text Name2: text" all in one block
-        speaker_pattern = re.compile(r'\b([A-Za-z][A-Za-z0-9_ ]{0,30}?)\s*:')
+        # Find all "Name:" occurrences and split on them
+        speaker_pattern = re.compile(r'\b([A-Za-z][A-Za-z0-9 ]{1,39}?)\s*:')
         candidates = speaker_pattern.findall(text)
-        counts = Counter(c.strip() for c in candidates)
-        # Accept speakers that appear at least once (could be genuine single-message speakers)
-        speakers = [s for s, _ in counts.items()]
+        counts = Counter(c.strip() for c in candidates if len(c.strip()) > 1)
 
-        if speakers:
-            speakers_sorted = sorted(speakers, key=len, reverse=True)
-            escaped = [re.escape(s) for s in speakers_sorted]
-            split_pattern = re.compile(r'(' + '|'.join(escaped) + r')\s*:')
-            parts = split_pattern.split(text)
+        if counts:
+            # Sort by length descending to avoid partial-name shadowing
+            speakers = sorted(counts.keys(), key=len, reverse=True)
+            escaped  = [re.escape(s) for s in speakers]
+            split_pat = re.compile(r'(' + '|'.join(escaped) + r')\s*:')
+            parts = split_pat.split(text)
 
             i = 1
             while i < len(parts) - 1:
                 speaker = parts[i].strip()
-                msg = parts[i + 1].strip()
+                msg     = parts[i + 1].strip()
                 if speaker in speakers and msg:
                     turns.append({"speaker": speaker, "text": msg})
                 i += 2
@@ -91,29 +92,62 @@ def parse_chat_to_turns(text):
 
 def format_chat_for_ui(turns):
     """
-    Same logic as audio's format_for_ui.
-    Maps the first speaker to 'Speaker 00' (Agent) and second to 'Speaker 01' (Customer),
-    unless the first message suggests they are the customer.
+    Maps detected speakers to Speaker 00 / Speaker 01 labels.
+    - Speaker 00 = Agent (whoever opens with a greeting or is NOT asking for help)
+    - Speaker 01 = Customer
+    - Supports 3+ speakers: Speaker 02, Speaker 03, etc.
     """
     if not turns:
         return []
 
-    first_msg = turns[0]['text'].lower()
-    all_speakers = list(dict.fromkeys(t['speaker'] for t in turns))  # preserve order, deduplicate
+    # Preserve speaker order of appearance
+    seen = {}
+    for t in turns:
+        if t['speaker'] not in seen:
+            seen[t['speaker']] = len(seen)
 
-    # If first speaker is asking for help, they're the customer
-    if any(word in first_msg for word in ["help", "issue", "problem", "broken", "error"]):
-        agent_speaker = all_speakers[1] if len(all_speakers) > 1 else all_speakers[0]
+    # Determine who is the agent: first speaker, unless their first message
+    # sounds like a customer complaint — then agent is the second speaker
+    all_speakers_in_order = list(seen.keys())
+    first_speaker         = all_speakers_in_order[0]
+    first_msg             = next(
+        (t['text'].lower() for t in turns if t['speaker'] == first_speaker), ""
+    )
+
+    customer_keywords = [
+        "help", "issue", "problem", "broken", "error",
+        "not working", "can't", "cannot", "please", "complaint",
+        "wrong", "fail", "stuck", "unable", "why is"
+    ]
+    agent_keywords = [
+        "welcome", "hello", "hi", "good morning", "good afternoon",
+        "how can i", "how may i", "assist", "support", "thank you for calling"
+    ]
+
+    first_msg_is_customer = any(k in first_msg for k in customer_keywords)
+    first_msg_is_agent    = any(k in first_msg for k in agent_keywords)
+
+    if first_msg_is_customer and not first_msg_is_agent:
+        # Swap: second speaker is the agent
+        if len(all_speakers_in_order) > 1:
+            agent_speaker = all_speakers_in_order[1]
+        else:
+            agent_speaker = first_speaker
     else:
-        agent_speaker = all_speakers[0]
+        agent_speaker = first_speaker
 
     formatted = []
     for t in turns:
-        is_agent = t['speaker'].lower() == agent_speaker.lower()
-        formatted.append({
-            "speaker": "Speaker 00" if is_agent else "Speaker 01",
-            "text": t['text']
-        })
+        speaker_name = t['speaker']
+        idx          = seen[speaker_name]
+
+        if speaker_name == agent_speaker:
+            label = "Speaker 00"   # Agent
+        else:
+            label = f"Speaker {idx:02d}"   # Customer or others: 01, 02, ...
+
+        formatted.append({"speaker": label, "text": t['text']})
+
     return formatted
 
 

@@ -1,0 +1,33 @@
+speaker,text,start,end
+SPEAKER_00,Thank you for calling Martha's flowers Thomas is see well,0.43,3.99
+SPEAKER_01,I'd like to order flowers and I think you have what I'm looking for,3.99,7.21
+SPEAKER_00,"I'd be happy to take care of your order may have your name, please",7.35,10.47
+SPEAKER_01,Randall Thomas,11.07,12.55
+SPEAKER_00,"Randall Thomas, can you spell that for me?",12.55,14.91
+SPEAKER_01,Randall,15.51,17.19
+SPEAKER_00,an,17.19,19.19
+SPEAKER_01,Thomas,19.51,20.79
+SPEAKER_00,th o man,20.79,22.47
+SPEAKER_01,Thank you for that information Randall may have your home or office number area code first,22.47,27.03
+SPEAKER_00,409,28.03,29.19
+SPEAKER_01,then,29.23,31.23
+SPEAKER_00,5 0 8 8 that's 4 0 9 8 6 6 5 0 8 8,32.27,38.07
+SPEAKER_01,Do you have a fax number or email address?,38.07,40.55
+SPEAKER_00,email is randall.Thomas at gmail.com,41.23,46.15
+SPEAKER_01,Randall.Thomas at gmail.com may have your shipping address,46.95,51.35
+SPEAKER_00,6800 okay baddest Avenue,52.47,55.19
+SPEAKER_01,so month Texas,55.83,57.83
+SPEAKER_00,zip code,57.87,59.83
+SPEAKER_01,7706,59.83,61.83
+SPEAKER_00,"Gladdest Avenue Beaumont, Texas zip code 7706",61.83,66.31
+SPEAKER_01,Thank you for the information. What products were you interested in purchasing?,66.55,70.47
+SPEAKER_00,Red roses probably a dozen,70.87,72.87
+SPEAKER_01,One dozen of red roses. Do you want long stems?,73.67,76.47
+SPEAKER_00,"They're sure all right Randall. Let me process the order one moment, please",76.47,80.91
+SPEAKER_01,Okay,82.27,84.99
+SPEAKER_00,Randall you're ordering one dozen long-stemmed red roses the total amount of your order is $40 and it will be shipped to your,85.03,92.23
+SPEAKER_01,address within 24 hours,92.23,94.23
+SPEAKER_00,I was thinking of delivering my roses again,94.23,96.23
+SPEAKER_01,Within 24 hours,96.63,98.63
+SPEAKER_00,"Okay, no problem. Is there anything else I can help you with?",98.63,101.75
+SPEAKER_01,That's all for now thing. No problem Randall. Thank you for calling Martha's florist. Have a nice day,102.47,107.67

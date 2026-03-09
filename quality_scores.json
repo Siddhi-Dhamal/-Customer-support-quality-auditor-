@@ -1,0 +1,16 @@
+{
+    "status": "success",
+    "source": "audio",
+    "total_lines_analyzed": 33,
+    "emotion_analysis": {
+        "emotion": "Neutral",
+        "confidence": "90%",
+        "reason": "The customer's messages are straightforward and lack any strong emotional tone."
+    },
+    "satisfaction_analysis": {
+        "score": "90",
+        "score_percentage": "90%",
+        "status": "Satisfied",
+        "reason": "The agent efficiently resolved the customer's inquiry and provided a promotional offer, resulting in a successful sale."
+    }
+}

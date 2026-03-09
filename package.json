@@ -1,0 +1,29 @@
+{
+  "name": "ai-customer-quality-auditor-system-1",
+  "version": "1.0.0",
+  "description": "📞 Customer Support Quality Auditor\r 📌 Project Overview",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siddhi-Dhamal/ai-customer-quality-auditor-system-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Siddhi-Dhamal/ai-customer-quality-auditor-system-1/issues"
+  },
+  "homepage": "https://github.com/Siddhi-Dhamal/ai-customer-quality-auditor-system-1#readme",
+  "dependencies": {
+    "docx": "^9.6.0",
+    "file-saver": "^2.0.5",
+    "jspdf": "^4.2.0",
+    "react-router-dom": "^7.13.1"
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.7"
+  }
+}
