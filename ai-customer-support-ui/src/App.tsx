@@ -68,7 +68,7 @@ function LandingPage() {
 
       {/* NAV */}
       <nav style={{ position:'fixed', top:0, left:0, right:0, zIndex:100, display:'flex', alignItems:'center',
-        justifyContent:'space-between', padding:'18px 60px',
+        justifyContent:'space-between', padding:'12px 16px',
         background:'rgba(4,11,24,0.8)', backdropFilter:'blur(16px)',
         borderBottom:'1px solid rgba(59,130,246,0.1)' }}>
         <div style={{ display:'flex', alignItems:'center', gap:10 }}>
@@ -108,15 +108,15 @@ function LandingPage() {
             background:'linear-gradient(135deg,#60a5fa,#3b82f6)',
             WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>Q</span>
         </div>
-        <div style={{ display:'flex', gap:36 }}>
+        <div style={{ display:'flex', gap:16 }}>
           {['Features','How it works'].map(l => (
             <a key={l} href={`#${l.toLowerCase().replace(/ /g,'-')}`}
-              style={{ color:'#64748b', fontSize:13, fontWeight:500, textDecoration:'none', transition:'color 0.2s' }}
+              style={{ color:'#64748b', fontSize:11, fontWeight:500, textDecoration:'none', transition:'color 0.2s', whiteSpace:'nowrap' }}
               onMouseEnter={e => (e.currentTarget.style.color='#60a5fa')}
               onMouseLeave={e => (e.currentTarget.style.color='#64748b')}>{l}</a>
           ))}
         </div>
-        <button className="btn-primary" style={{ padding:'9px 22px', fontSize:13 }}
+        <button className="btn-primary" style={{ padding:'8px 14px', fontSize:11 }}
           onClick={() => navigate('/dashboard')}>
           Get Started
         </button>
