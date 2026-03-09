@@ -81,7 +81,7 @@ function AuraQIcon() {
 
 function IconNav({ activePage, setActivePage, onDownloadClick }: IconNavProps) {
   return (
-    <div className="hidden md:flex w-44 bg-[#0b1224] border-r border-white/5 flex-col items-center py-6 gap-2 h-screen z-10">
+    <div className="w-44 bg-[#0b1224] border-r border-white/5 hidden md:flex flex-col items-center py-6 gap-2 h-screen z-10">
 
       {/* AuraQ Logo */}
       <div className="mb-6 flex items-center gap-3 px-3 w-full">
