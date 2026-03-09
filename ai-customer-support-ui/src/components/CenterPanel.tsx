@@ -365,7 +365,7 @@ const runQualityScoring = async (file: File) => {
         
 
         {/* Quality Score Cards */}
-        <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
           {scoreItems.map((item) => (
             <div key={item.label} className="bg-[#161e31] border border-white/5 rounded-2xl p-5 flex items-center justify-between">
               <div className="flex-1">
@@ -422,7 +422,7 @@ const runQualityScoring = async (file: File) => {
           <h3 className="text-sm font-bold text-white mb-1">Detailed Quality Audit</h3>
           <p className="text-xs text-slate-500 mb-6">Visual breakdown of Empathy, Compliance and Resolution across the call</p>
 
-          <div className="grid grid-cols-2 gap-5 mb-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
 
             {/* Empathy Line Chart */}
             <div className="bg-[#161e31] border border-white/5 rounded-2xl p-5">
@@ -692,7 +692,7 @@ const runQualityScoring = async (file: File) => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {stats.map((s, i) => (
             <div key={i} className="bg-[#2c364c] border border-white/5 rounded-2xl p-5 shadow-lg transition-all hover:bg-[#343e57]">
               <div className="flex items-center gap-2 mb-3">
