@@ -10,10 +10,10 @@ const Calls = () => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-heading font-bold">Call History</h1>
-            <p className="text-muted-foreground mt-1">All uploaded and analyzed calls</p>
+            <h1 className="text-3xl font-heading font-bold tracking-tight">Call History</h1>
+            <p className="text-muted-foreground mt-1 text-sm">All uploaded and analyzed calls</p>
           </div>
-          <Button variant="outline" className="border-destructive/50 text-destructive hover:bg-destructive/10">
+          <Button variant="outline" className="rounded-xl border-destructive/40 text-destructive hover:bg-destructive/10">
             <Trash2 className="h-4 w-4 mr-2" /> Clear History
           </Button>
         </div>
@@ -23,15 +23,15 @@ const Calls = () => {
           {mockAudits.map((audit) => (
             <div
               key={audit.id}
-              className="glass-card rounded-xl p-5 flex items-center justify-between hover:border-primary/30 transition-all cursor-pointer"
+              className="glass-card card-hover rounded-2xl p-5 flex items-center justify-between cursor-pointer"
             >
               <div className="flex items-center gap-4">
-                <div className="h-11 w-11 rounded-xl bg-primary/15 flex items-center justify-center">
+                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center neon-border">
                   <Headphones className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">{audit.title}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{audit.date} {audit.duration}</p>
+                  <p className="text-sm font-semibold">{audit.title}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{audit.date} • {audit.duration}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2 text-success">

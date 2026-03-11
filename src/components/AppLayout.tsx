@@ -6,7 +6,7 @@ interface Props {
 
 export function AppLayout({ children }: Props) {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background bg-mesh-gradient">
       <Sidebar />
       <main className="ml-[200px] p-6 md:p-8">
         {children}
