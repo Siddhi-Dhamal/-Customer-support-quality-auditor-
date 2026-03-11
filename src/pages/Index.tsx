@@ -1,64 +1,143 @@
-import { useState } from "react";
-import { DashboardHeader } from "@/components/DashboardHeader";
-import { StatsOverview } from "@/components/StatsOverview";
-import { UploadPanel } from "@/components/UploadPanel";
-import { ScoreRadarChart } from "@/components/ScoreRadarChart";
-import { ScoreCards } from "@/components/ScoreCards";
-import { TranscriptViewer } from "@/components/TranscriptViewer";
-import { SummaryCard } from "@/components/SummaryCard";
-import { AuditHistory } from "@/components/AuditHistory";
-import { ScoreTrendChart } from "@/components/ScoreTrendChart";
-import { mockAudits, type AuditRecord } from "@/lib/mock-data";
-import { Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useCallback } from "react";
+import { AppLayout } from "@/components/AppLayout";
+import { Upload, Mic, Search, User, Headphones } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { mockTranscript } from "@/lib/mock-data";
 
 const Index = () => {
-  const [selected, setSelected] = useState<AuditRecord>(mockAudits[0]);
+  const [dragOver, setDragOver] = useState(false);
+  const [files, setFiles] = useState<File[]>([]);
+  const [searchTranscript, setSearchTranscript] = useState("");
+
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOver(false);
+    const dropped = Array.from(e.dataTransfer.files);
+    setFiles((prev) => [...prev, ...dropped]);
+  }, []);
+
+  const filteredTranscript = mockTranscript.filter((entry) =>
+    entry.text.toLowerCase().includes(searchTranscript.toLowerCase())
+  );
 
   return (
-    <div className="min-h-screen bg-background">
-      <DashboardHeader />
+    <AppLayout>
+      <div className="max-w-[1200px] mx-auto space-y-6">
+        {/* Page Header */}
+        <div>
+          <h1 className="text-3xl font-heading font-bold">Home Page</h1>
+          <p className="text-muted-foreground mt-1">Upload, transcribe and analyze customer calls</p>
+        </div>
 
-      <main className="max-w-[1440px] mx-auto px-4 md:px-6 py-6 space-y-6">
-        <StatsOverview />
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left column */}
-          <div className="space-y-6">
-            <UploadPanel />
-            <AuditHistory audits={mockAudits} onSelect={setSelected} selectedId={selected.id} />
+        {/* Stats Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="glass-card rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="h-2 w-2 rounded-full bg-primary" />
+              <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Total Files</span>
+            </div>
+            <div className="text-3xl font-heading font-bold">{files.length > 0 ? files.length : 4}</div>
+            <p className="text-xs text-muted-foreground mt-1">uploaded</p>
           </div>
-
-          {/* Center column */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Selected audit header */}
-            <div className="glass-card rounded-xl p-5 flex items-center justify-between animate-slide-up">
-              <div>
-                <h2 className="text-xl font-heading font-bold">{selected.title}</h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {selected.agent} • {selected.date} • {selected.duration}
-                </p>
-              </div>
-              <Button variant="outline" size="sm" className="border-border/50 text-muted-foreground hover:text-foreground">
-                <Download className="h-4 w-4 mr-2" /> Report
-              </Button>
+          <div className="glass-card rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="h-2 w-2 rounded-full bg-success" />
+              <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Avg Satisfaction</span>
             </div>
-
-            <SummaryCard summary={selected.summary} overallScore={selected.overallScore} />
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <ScoreRadarChart scores={selected.scores} />
-              <ScoreCards scores={selected.scores} />
+            <div className="text-3xl font-heading font-bold">—</div>
+            <p className="text-xs text-muted-foreground mt-1">last {files.length > 0 ? files.length : 4} files</p>
+          </div>
+          <div className="glass-card rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="h-2 w-2 rounded-full bg-chart-4" />
+              <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Avg Emotion</span>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <TranscriptViewer transcript={selected.transcript} />
-              <ScoreTrendChart />
-            </div>
+            <div className="text-3xl font-heading font-bold">—</div>
+            <p className="text-xs text-muted-foreground mt-1">no data yet</p>
           </div>
         </div>
-      </main>
-    </div>
+
+        {/* Upload Area */}
+        <div
+          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={handleDrop}
+          onClick={() => {
+            const input = document.createElement("input");
+            input.type = "file";
+            input.accept = "audio/*,.txt,.json,.csv";
+            input.multiple = true;
+            input.onchange = () => {
+              if (input.files) setFiles((prev) => [...prev, ...Array.from(input.files!)]);
+            };
+            input.click();
+          }}
+          className={`glass-card rounded-xl p-10 md:p-16 text-center cursor-pointer transition-all border-2 border-dashed ${
+            dragOver ? "border-primary bg-primary/5" : "border-border/40 hover:border-primary/40"
+          }`}
+        >
+          <div className="flex flex-col items-center gap-4">
+            <div className="h-16 w-16 rounded-2xl bg-primary flex items-center justify-center">
+              <Upload className="h-7 w-7 text-primary-foreground" />
+            </div>
+            <h3 className="text-lg font-heading font-bold">Upload Your Call</h3>
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">
+              Drag and drop or click to browse • .M4A .MP3 .WAV .TXT .CSV
+            </p>
+          </div>
+        </div>
+
+        {/* Live Transcript */}
+        <div className="glass-card rounded-xl overflow-hidden">
+          <div className="px-6 pt-6 pb-4 flex items-center gap-2">
+            <Mic className="h-4 w-4 text-primary" />
+            <h3 className="text-sm font-heading font-bold uppercase tracking-wider text-primary">Live Transcript</h3>
+          </div>
+          <div className="px-6 pb-4">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Search transcript..."
+                value={searchTranscript}
+                onChange={(e) => setSearchTranscript(e.target.value)}
+                className="pl-10 bg-secondary/50 border-border/30"
+              />
+            </div>
+          </div>
+          <ScrollArea className="h-[400px]">
+            <div className="px-6 pb-6 space-y-6">
+              {filteredTranscript.map((entry, i) => (
+                <div key={i} className={`flex flex-col ${entry.speaker === "customer" ? "items-end" : "items-start"}`}>
+                  <div className="flex items-center gap-2 mb-1">
+                    {entry.speaker === "agent" ? (
+                      <>
+                        <span className="text-xs font-bold uppercase text-primary">Agent</span>
+                        <span className="text-xs text-muted-foreground/50">{entry.timestamp}</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-xs text-muted-foreground/50">{entry.timestamp}</span>
+                        <span className="text-xs font-bold uppercase text-chart-4">Customer</span>
+                      </>
+                    )}
+                  </div>
+                  <div
+                    className={`max-w-[80%] rounded-2xl px-5 py-3 text-sm ${
+                      entry.speaker === "agent"
+                        ? "bg-secondary/60 text-foreground rounded-tl-sm"
+                        : "bg-primary text-primary-foreground rounded-tr-sm"
+                    }`}
+                  >
+                    {entry.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
+        </div>
+      </div>
+    </AppLayout>
   );
 };
 
