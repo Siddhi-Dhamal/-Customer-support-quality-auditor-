@@ -113,11 +113,11 @@ const Index = () => {
                     {entry.speaker === "agent" ? (
                       <>
                         <span className="text-[11px] font-bold uppercase tracking-wider text-primary">Agent</span>
-                        <span className="text-[11px] text-muted-foreground/40">{entry.timestamp}</span>
+                        <span className="text-[11px] text-[hsl(220_13%_55%)]">{entry.timestamp}</span>
                       </>
                     ) : (
                       <>
-                        <span className="text-[11px] text-muted-foreground/40">{entry.timestamp}</span>
+                        <span className="text-[11px] text-[hsl(220_13%_55%)]">{entry.timestamp}</span>
                         <span className="text-[11px] font-bold uppercase tracking-wider text-chart-4">Customer</span>
                       </>
                     )}
