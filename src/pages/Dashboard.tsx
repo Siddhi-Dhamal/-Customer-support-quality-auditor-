@@ -101,7 +101,7 @@ const Index = () => {
                 placeholder="Search transcript..."
                 value={searchTranscript}
                 onChange={(e) => setSearchTranscript(e.target.value)}
-                className="pl-10 bg-secondary/40 border-border/20 rounded-xl"
+                className="pl-10 bg-white border-[hsl(220_13%_85%)] rounded-xl text-[hsl(222_47%_11%)]"
               />
             </div>
           </div>
