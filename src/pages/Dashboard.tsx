@@ -89,7 +89,7 @@ const Index = () => {
         </div>
 
         {/* Live Transcript */}
-        <div className="glass-card-solid rounded-2xl overflow-hidden">
+        <div className="rounded-2xl overflow-hidden bg-[hsl(210_20%_95%)] text-[hsl(222_47%_11%)]">
           <div className="px-6 pt-6 pb-4 flex items-center gap-2">
             <Mic className="h-4 w-4 text-primary" />
             <h3 className="text-xs font-heading font-bold uppercase tracking-[0.15em] text-primary">Live Transcript</h3>
