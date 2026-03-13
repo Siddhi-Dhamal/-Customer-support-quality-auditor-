@@ -125,7 +125,7 @@ const Index = () => {
                   <div
                     className={`max-w-[80%] rounded-2xl px-5 py-3 text-sm leading-relaxed ${
                       entry.speaker === "agent"
-                        ? "bg-secondary/60 text-foreground/90 rounded-tl-md"
+                        ? "bg-[hsl(210_20%_88%)] text-[hsl(222_47%_11%)] rounded-tl-md"
                         : "bg-gradient-to-r from-primary to-primary/80 text-white rounded-tr-md"
                     }`}
                   >

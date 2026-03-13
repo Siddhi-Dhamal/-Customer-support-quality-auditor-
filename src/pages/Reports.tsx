@@ -173,6 +173,92 @@ const Reports = () => {
           </div>
         </div>
 
+        {/* Resolution Velocity Chart */}
+        <div className="glass-card rounded-2xl p-6">
+          <div className="flex items-center gap-2 mb-5">
+            <CheckCircle className="h-4 w-4 text-chart-4" />
+            <span className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">Resolution Velocity</span>
+          </div>
+          <div className="h-[180px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={resolutionVelocityData}>
+                <defs>
+                  <linearGradient id="resGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="hsl(271 81% 56%)" stopOpacity={0.5} />
+                    <stop offset="100%" stopColor="hsl(271 81% 56%)" stopOpacity={0.05} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(217 33% 16%)" />
+                <XAxis dataKey="step" tick={{ fill: "hsl(215 20% 45%)", fontSize: 10 }} axisLine={false} />
+                <YAxis domain={[0, 10]} tick={{ fill: "hsl(215 20% 45%)", fontSize: 10 }} axisLine={false} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "hsl(222 44% 10%)",
+                    border: "1px solid hsl(222 30% 20%)",
+                    borderRadius: "8px",
+                    color: "hsl(210 40% 96%)",
+                    fontSize: 12,
+                  }}
+                />
+                <Area type="monotone" dataKey="score" stroke="hsl(271 81% 56%)" fill="url(#resGrad)" strokeWidth={2} />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Customer Emotion & Satisfaction */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Customer Emotion */}
+          <div className="glass-card rounded-2xl p-6 space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Globe className="h-4 w-4 text-muted-foreground" />
+                <span className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">Customer Emotion</span>
+              </div>
+              <span className="text-[10px] uppercase tracking-widest font-bold text-success bg-success/15 px-3 py-1 rounded-full">Live</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-4xl">😌</span>
+              <div>
+                <p className="text-xl font-heading font-bold">Satisfied</p>
+                <p className="text-xs text-muted-foreground">Confidence: <span className="font-bold text-foreground">90%</span></p>
+              </div>
+            </div>
+            <div className="score-bar">
+              <div className="score-fill score-fill-gradient-cyan" style={{ width: "90%" }} />
+            </div>
+            <div className="bg-secondary/40 rounded-xl p-4 border-l-2 border-success">
+              <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-1">Reason</p>
+              <p className="text-xs text-muted-foreground leading-relaxed italic">The customer completed their order smoothly and expressed thanks at the end of the call, indicating a positive experience.</p>
+            </div>
+          </div>
+
+          {/* Customer Satisfaction */}
+          <div className="glass-card rounded-2xl p-6 space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <ThumbsUp className="h-4 w-4 text-muted-foreground" />
+                <span className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">Customer Satisfaction</span>
+              </div>
+              <span className="text-[10px] uppercase tracking-widest font-bold text-success bg-success/15 px-3 py-1 rounded-full">Live</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-4xl">😊</span>
+              <div>
+                <p className="text-xl font-heading font-bold">Highly Satisfied</p>
+                <p className="text-xs text-muted-foreground">Confidence: <span className="font-bold text-foreground">95%</span></p>
+              </div>
+            </div>
+            <div className="score-bar">
+              <div className="score-fill score-fill-gradient-green" style={{ width: "95%" }} />
+            </div>
+            <div className="bg-secondary/40 rounded-xl p-4 border-l-2 border-primary">
+              <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-1">Reason</p>
+              <p className="text-xs text-muted-foreground leading-relaxed italic">Agent demonstrated exceptional empathy and resolved the issue efficiently, leading to a highly satisfactory customer experience with professional closing.</p>
+            </div>
+          </div>
+        </div>
+
         {/* Quality Analysis */}
         <div className="glass-card rounded-2xl p-7 space-y-5">
           <div className="flex items-center justify-between">
