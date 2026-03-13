@@ -1,6 +1,6 @@
 import { AppLayout } from "@/components/AppLayout";
 import { mockAudits, type QualityScore } from "@/lib/mock-data";
-import { Heart, Shield, CheckCircle, Zap, RefreshCw, CircleDot, TrendingUp, MessageSquare, Download, Smile, ThumbsUp, Globe } from "lucide-react";
+import { Heart, Shield, CheckCircle, RefreshCw, CircleDot, TrendingUp, MessageSquare, Smile, ThumbsUp, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   LineChart, Line, BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip,
@@ -133,46 +133,6 @@ const Reports = () => {
           </div>
         </div>
 
-        {/* Fairness Analysis */}
-        <div className="glass-card rounded-2xl p-7 space-y-6">
-          <div className="inline-flex items-center gap-2 bg-success/10 text-success px-4 py-2 rounded-full text-xs font-semibold border border-success/20">
-            <CircleDot className="h-3 w-3" /> Bias Reduction Applied
-          </div>
-
-          <div>
-            <h3 className="text-lg font-heading font-bold">Fairness Analysis</h3>
-            <p className="text-sm text-muted-foreground">How fairly and unbiasedly the agent handled this call</p>
-          </div>
-
-          <div className="space-y-6">
-            {fairnessItems.map((item) => (
-              <div key={item.label}>
-                <div className="flex items-center justify-between mb-2">
-                  <div>
-                    <p className="text-sm font-semibold">{item.label}</p>
-                    <p className="text-xs text-muted-foreground">{item.desc}</p>
-                  </div>
-                  <div className="flex items-baseline gap-0.5">
-                    <span className="text-xl font-heading font-black text-gradient-cyan">{item.score}</span>
-                    <span className="text-xs text-muted-foreground">/10</span>
-                  </div>
-                </div>
-                <div className="score-bar">
-                  <div className={`score-fill ${item.gradientClass}`} style={{ width: `${item.score * 10}%` }} />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="glass-card rounded-xl p-5 flex items-center justify-between">
-            <span className="text-sm font-semibold">Overall Fairness Score</span>
-            <div className="flex items-baseline gap-0.5">
-              <span className="text-2xl font-heading font-black text-gradient-cyan">9</span>
-              <span className="text-sm text-muted-foreground">/10</span>
-            </div>
-          </div>
-        </div>
-
         {/* Resolution Velocity Chart */}
         <div className="glass-card rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-5">
@@ -259,6 +219,46 @@ const Reports = () => {
           </div>
         </div>
 
+        {/* Fairness Analysis */}
+        <div className="glass-card rounded-2xl p-7 space-y-6">
+          <div className="inline-flex items-center gap-2 bg-success/10 text-success px-4 py-2 rounded-full text-xs font-semibold border border-success/20">
+            <CircleDot className="h-3 w-3" /> Bias Reduction Applied
+          </div>
+
+          <div>
+            <h3 className="text-lg font-heading font-bold">Fairness Analysis</h3>
+            <p className="text-sm text-muted-foreground">How fairly and unbiasedly the agent handled this call</p>
+          </div>
+
+          <div className="space-y-6">
+            {fairnessItems.map((item) => (
+              <div key={item.label}>
+                <div className="flex items-center justify-between mb-2">
+                  <div>
+                    <p className="text-sm font-semibold">{item.label}</p>
+                    <p className="text-xs text-muted-foreground">{item.desc}</p>
+                  </div>
+                  <div className="flex items-baseline gap-0.5">
+                    <span className="text-xl font-heading font-black text-gradient-cyan">{item.score}</span>
+                    <span className="text-xs text-muted-foreground">/10</span>
+                  </div>
+                </div>
+                <div className="score-bar">
+                  <div className={`score-fill ${item.gradientClass}`} style={{ width: `${item.score * 10}%` }} />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="glass-card rounded-xl p-5 flex items-center justify-between">
+            <span className="text-sm font-semibold">Overall Fairness Score</span>
+            <div className="flex items-baseline gap-0.5">
+              <span className="text-2xl font-heading font-black text-gradient-cyan">9</span>
+              <span className="text-sm text-muted-foreground">/10</span>
+            </div>
+          </div>
+        </div>
+
         {/* Quality Analysis */}
         <div className="glass-card rounded-2xl p-7 space-y-5">
           <div className="flex items-center justify-between">
@@ -266,18 +266,9 @@ const Reports = () => {
               <h3 className="text-lg font-heading font-bold">Quality Analysis</h3>
               <p className="text-sm text-muted-foreground">Scores auto-update when you upload a file on Home page</p>
             </div>
-            <div className="flex gap-3">
-              <Button
-                variant="outline"
-                className="rounded-xl border-border/30 hover:bg-secondary/60"
-                onClick={() => window.print()}
-              >
-                <Download className="h-4 w-4 mr-2" /> Download Report
-              </Button>
-              <Button className="rounded-xl bg-gradient-to-r from-primary to-chart-4 text-white hover:opacity-90 glow-primary">
-                <RefreshCw className="h-4 w-4 mr-2" /> Refresh Scores
-              </Button>
-            </div>
+            <Button className="rounded-xl bg-gradient-to-r from-primary to-chart-4 text-white hover:opacity-90 glow-primary">
+              <RefreshCw className="h-4 w-4 mr-2" /> Refresh Scores
+            </Button>
           </div>
 
           <div className="glass-card rounded-xl p-6">
