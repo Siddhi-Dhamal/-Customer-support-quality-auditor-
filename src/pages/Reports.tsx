@@ -180,9 +180,18 @@ const Reports = () => {
               <h3 className="text-lg font-heading font-bold">Quality Analysis</h3>
               <p className="text-sm text-muted-foreground">Scores auto-update when you upload a file on Home page</p>
             </div>
-            <Button className="rounded-xl bg-gradient-to-r from-primary to-chart-4 text-white hover:opacity-90 glow-primary">
-              <RefreshCw className="h-4 w-4 mr-2" /> Refresh Scores
-            </Button>
+            <div className="flex gap-3">
+              <Button
+                variant="outline"
+                className="rounded-xl border-border/30 hover:bg-secondary/60"
+                onClick={() => window.print()}
+              >
+                <Download className="h-4 w-4 mr-2" /> Download Report
+              </Button>
+              <Button className="rounded-xl bg-gradient-to-r from-primary to-chart-4 text-white hover:opacity-90 glow-primary">
+                <RefreshCw className="h-4 w-4 mr-2" /> Refresh Scores
+              </Button>
+            </div>
           </div>
 
           <div className="glass-card rounded-xl p-6">
