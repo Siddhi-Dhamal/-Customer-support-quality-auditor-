@@ -3,31 +3,29 @@ import csv
 import pandas as pd
 from datetime import datetime
 
-# --- DEEPGRAM V3.11 MODULAR IMPORTS ---
+# --- DEEPGRAM V3.x IMPORTS ---
 from deepgram import DeepgramClient, PrerecordedOptions, FileSource
 
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pathlib import Path
-
-from dotenv import load_dotenv
-load_dotenv(dotenv_path=Path(__file__).parent / ".env")
 
 # ---------------- CONFIG ----------------
 TRANSCRIPT_FILE = "transcriptions_with_speakers.csv"
 SUMMARY_FILE = "final_summaries.csv"
 
-# Replace with your actual key
+# Load from environment so the key is not stored in source control
+DEEPGRAM_API_KEY = os.environ.get("DEEPGRAM_API_KEY")
+if not DEEPGRAM_API_KEY:
+    raise RuntimeError("Missing required env var: DEEPGRAM_API_KEY")
 
-DEEPGRAM_API_KEY=os.getenv("DEEPGRAM_API_KEY","").strip()
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-    allow_credentials=False,
 )
 
 # Initialize Deepgram Client
@@ -81,8 +79,8 @@ async def process_upload(file: UploadFile = File(...)):
         )
 
         print(f"DEBUG: Processing {file.filename}...")
-        
-        # ONE call to Deepgram handles everything
+
+        # SDK v3.x syntax — use prerecorded directly
         response = dg_client.listen.prerecorded.v("1").transcribe_file(payload, options)
         
         # 1. Get the Instant Summary
@@ -138,23 +136,6 @@ async def process_upload(file: UploadFile = File(...)):
                 "summary": deepgram_summary,
             })
 
-        # Save per-file summary for audio
-
-        try:
-            import re as _re, json as _json, os as _os
-            AUDIO_SUMMARIES_DIR = "file_summaries"
-            _os.makedirs(AUDIO_SUMMARIES_DIR, exist_ok=True)
-            safe_name = _re.sub(r'[^a-zA-Z0-9_\-]', '_', file.filename)
-            summary_path = _os.path.join(AUDIO_SUMMARIES_DIR, f"{safe_name}.json")
-            with open(summary_path, "w") as f:
-                _json.dump({
-                    "filename": file.filename,
-                    "summary":  deepgram_summary,
-                    "saved_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                }, f, indent=4)
-        except Exception as e:
-            print(f"Per-file summary save error: {e}")
-
         return {"status": "success", "summary": deepgram_summary}
 
     except Exception as e:
@@ -172,26 +153,6 @@ async def get_transcript():
     except Exception as e:
         print(f"Transcript fetch error: {e}")
         return []
-
-@app.get("/get-file-summary/{filename:path}")
-async def get_file_summary(filename: str):
-    try:
-        import re as _re, json as _json
-        from urllib.parse import unquote
-        # Decode URL encoding first, then convert to safe filename
-        decoded = unquote(filename)
-        safe_name = _re.sub(r'[^a-zA-Z0-9_\-]', '_', decoded)
-        BASE = os.path.dirname(os.path.abspath(__file__))
-        path = os.path.join(BASE, "file_summaries", f"{safe_name}.json")
-        print(f"DEBUG: Looking for summary at {path}")
-        if os.path.exists(path):
-            with open(path) as f:
-                return _json.load(f)
-        return {"summary": "No summary available."}
-    except Exception as e:
-        print(f"Summary fetch error: {e}")
-        return {"summary": "No summary available."}
-
 
 @app.get("/get-summary")
 async def get_summary():
@@ -211,43 +172,14 @@ async def get_history():
     try:
         df = pd.read_csv(SUMMARY_FILE)
         # Return last 10 items in reverse order (newest first)
-        return df.iloc[::-1].to_dict(orient="records")
+        return df.tail(10).iloc[::-1].to_dict(orient="records")
     except:
         return []
 
-@app.post("/clear-history")
-async def clear_history():
-    try:
-        if os.path.exists(SUMMARY_FILE):
-            with open(SUMMARY_FILE, "w", newline="", encoding="utf-8") as f:
-                writer = csv.DictWriter(f, fieldnames=["file_name", "timestamp", "summary"])
-                writer.writeheader()
-        if os.path.exists(TRANSCRIPT_FILE):
-            os.remove(TRANSCRIPT_FILE)
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
 
-        # Clear file_scores folder
-        import shutil
-        BASE = os.path.dirname(os.path.abspath(__file__))
-
-        # Clear file_scores folder
-        file_scores_path = os.path.join(BASE, "file_scores")
-        if os.path.exists(file_scores_path):
-            shutil.rmtree(file_scores_path)
-            os.makedirs(file_scores_path)
-            print(f"DEBUG: Cleared file_scores at {file_scores_path}")
-
-        # Clear file_summaries folder
-        file_summaries_path = os.path.join(BASE, "file_summaries")
-        if os.path.exists(file_summaries_path):
-            shutil.rmtree(file_summaries_path)
-            os.makedirs(file_summaries_path)
-            print(f"DEBUG: Cleared file_summaries at {file_summaries_path}")
-
-        return {"status": "cleared"}
-    except Exception as e:
-        print(f"Clear history error: {e}")
-        return {"status": "error", "message": str(e)}
-    
 if __name__ == "__main__":
     import uvicorn
     # Local dev: http://127.0.0.1:8000

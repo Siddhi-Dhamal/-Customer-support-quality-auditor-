@@ -1,44 +1,28 @@
-speaker,text,start,end
-UNKNOWN,"Thank you for calling Martha's Flowers, town assistee.",0.82,3.43
-UNKNOWN,"Hello, I'd like to order flowers, and I think you have what I'm looking for.",3.99,7.27
-UNKNOWN,I'd be happy to take care of your order.,7.87,9.43
-UNKNOWN,"May I have your name, please?",9.47,10.65
-UNKNOWN,Randall Thomas.,11.23,12.03
-UNKNOWN,"Randall Thomas, can you spell that for me?",12.7,14.98
-UNKNOWN,"Randall, R-A-N-D-A-L-L, Thomas, T-H-O-N-A-N.",15.66,22.08
-UNKNOWN,"Thank you for that information, Randall.",22.86,24.43
-UNKNOWN,May I have your home or office number or area code first?,24.47,27.53
-UNKNOWN,Area code 409.,27.55,30.29
-UNKNOWN,866-5088.,30.86,33.38
-UNKNOWN,That's 409-866-5088.,34.42,37.59
-UNKNOWN,Do you have a fax number or email address?,38.43,40.67
-UNKNOWN,My email is randall.thomas at gmail.com.,41.55,47.08
-UNKNOWN,randall.thomas at gmail.com.,47.1,50.18
-UNKNOWN,May I have your shipping address?,50.2,51.7
-UNKNOWN,6800.,51.72,53.0
-UNKNOWN,Okay.,53.44,53.84
-UNKNOWN,Gladys Avenue.,54.52,55.3
-UNKNOWN,"Beaumont, Texas.",56.23,57.31
-UNKNOWN,Zipcoded.,58.35,59.03
-UNKNOWN,"777-06 Gladys Avenue, Beaumont, Texas, zip code 777-06.",59.35,66.13
-UNKNOWN,Thank you for the information.,66.94,68.2
-UNKNOWN,What products are you interested in purchasing?,68.54,70.56
-UNKNOWN,Red Roses.,71.38,72.16
-UNKNOWN,Probably a dozen.,72.18,74.14
-UNKNOWN,One dozen of Red Roses.,74.16,75.44
-UNKNOWN,Do you want long stems?,75.48,76.69
-UNKNOWN,Sure.,77.03,77.27
-UNKNOWN,All right.,77.85,78.23
-UNKNOWN,"Randall, let me process your order.",78.43,80.19
-UNKNOWN,"One moment, please.",80.31,81.13
-UNKNOWN,OK.,82.93,82.99
-UNKNOWN,"Randall, you're ordering one dozen long-stent red roses.",85.17,88.53
-UNKNOWN,"The total amount of your order is $40, and it will be shipped to your address within 24 hours.",88.61,93.8
-UNKNOWN,I was thinking of delivering my roses again.,94.46,96.56
-UNKNOWN,Within 24 hours.,97.02,98.17
-UNKNOWN,"Okay, no problem.",99.09,99.63
-UNKNOWN,Is there anything else I can help you with?,100.35,101.93
-UNKNOWN,"That's all for now, thanks.",102.85,104.47
-UNKNOWN,"No problem, Randall.",104.5,105.52
-UNKNOWN,Thank you for calling Martha's Florist.,105.54,107.06
-UNKNOWN,Have a nice day.,107.12,108.0
+speaker,text,start
+Speaker 00,thank you for calling martha's flourist how may i assist you,0.56
+Speaker 01,hello i'd like to order flowers and i think you have what i'm looking for,3.76
+Speaker 00,i'd be happy to take care of your order may i have your name please,7.68
+Speaker 01,randall thomas,11.04
+Speaker 00,randall thomas can you spell that for me,12.625
+Speaker 01,randall r a n d a l l thomas t h o n a n,15.505
+Speaker 00,thank you for that information randall may i have your home or office number area code first,22.625
+Speaker 01,area code 409 then 58665088,27.46
+Speaker 00,that's (409) 866-5088 do you have a fax number or email address,34.42
+Speaker 01,my email is randall.thomas@gmail.com,41.14
+Speaker 00,randall.thomas@gmail.com may i have your shipping address,46.995
+Speaker 01,6800,51.954998
+Speaker 00,okay,53.394997
+Speaker 01,gladys avenue beaumont texas zip code is 77706,54.355
+Speaker 00,gladys avenue beaumont texas zip code 77706 thank you for the information what products were you interested in purchasing,61.600002
+Speaker 01,red roses probably a dozen,71.200005
+Speaker 00,one dozen of red roses do you want long stems,74.105
+Speaker 01,yes sir,76.745
+Speaker 00,alright randall let me process your order one moment please,77.705
+Speaker 01,okay,82.425
+Speaker 00,randall you're ordering one dozen long stemmed red roses the total amount of your order is $40 and it will be shipped to your address within twenty four hours,85.065
+Speaker 01,i was looking to deliver my roses again,94.2
+Speaker 00,within twenty four hours,96.92
+Speaker 01,okay no problem,98.759995
+Speaker 00,is there anything else i can help you with,100.119995
+Speaker 01,that's all for now thanks,102.67999
+Speaker 00,no problem randall thank you for calling martha's florist have a nice day,104.335

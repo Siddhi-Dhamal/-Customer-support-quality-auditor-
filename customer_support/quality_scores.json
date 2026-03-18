@@ -1,16 +1,65 @@
 {
-    "status": "success",
-    "source": "audio",
-    "total_lines_analyzed": 27,
-    "emotion_analysis": {
-        "emotion": "Satisfied",
-        "confidence": "90%",
-        "reason": "The customer completed their order smoothly and expressed thanks at the end of the call, indicating a positive experience."
+    "empathy": 6,
+    "compliance": 8,
+    "resolution": 7,
+    "efficiency": 8,
+    "empathy_timeline": [
+        {
+            "stage": "Start",
+            "score": 6
+        },
+        {
+            "stage": "Mid",
+            "score": 6
+        },
+        {
+            "stage": "End",
+            "score": 6
+        }
+    ],
+    "compliance_steps": [
+        {
+            "step": "ID Verify",
+            "score": 9
+        },
+        {
+            "step": "Protocol",
+            "score": 9
+        },
+        {
+            "step": "Closing",
+            "score": 9
+        }
+    ],
+    "resolution_progress": [
+        {
+            "stage": "Discovery",
+            "score": 8
+        },
+        {
+            "stage": "Fixing",
+            "score": 8
+        },
+        {
+            "stage": "Solved",
+            "score": 7
+        }
+    ],
+    "customer_emotion": "Happy",
+    "emotion_confidence": 80,
+    "customer_satisfaction": "Highly Satisfied",
+    "satisfaction_percentage": 95,
+    "satisfaction_confidence": 90,
+    "reasoning": "The customer's positive tone throughout the conversation, such as 'hello i'd like to order flowers and i think you have what i'm looking for' and 'that's all for now thanks', indicates a happy emotional state. The customer's satisfaction is highly satisfied due to the issue being resolved and the customer's positive response at the end of the call.",
+    "efficiency_score": 5,
+    "avg_response_time": 0.0,
+    "bias": {
+        "name_neutrality": 7,
+        "language_neutrality": 10,
+        "tone_consistency": 8,
+        "equal_effort": 9,
+        "overall_fairness": 8
     },
-    "satisfaction_analysis": {
-        "score": "85",
-        "score_percentage": "85%",
-        "status": "Satisfied",
-        "reason": "The customer completed their request, received a clear summary of their order, and thanked the agent without expressing any complaints."
-    }
+    "customer_emotion_emoji": "\ud83d\ude0a",
+    "customer_satisfaction_emoji": "\ud83d\ude0a"
 }

@@ -1,0 +1,48 @@
+services:
+  - type: web_service
+    name: auraq-audio-api
+    env: python
+    plan: free
+    workingDirectory: customer_support
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DEEPGRAM_API_KEY
+        sync: false
+
+  - type: web_service
+    name: auraq-chat-api
+    env: python
+    plan: free
+    workingDirectory: customer_support
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn chat_app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DEEPGRAM_API_KEY
+        sync: false
+
+  - type: web_service
+    name: auraq-quality-api
+    env: python
+    plan: free
+    workingDirectory: customer_support
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn scoring_server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+
+  - type: static_site
+    name: auraq-frontend
+    env: node
+    plan: free
+    workingDirectory: aura-listen-insights
+    buildCommand: npm ci && npm run build
+    publishPath: dist
+    envVars:
+      - key: VITE_AUDIO_API
+        value: https://auraq-audio-api.onrender.com
+      - key: VITE_CHAT_API
+        value: https://auraq-chat-api.onrender.com
+      - key: VITE_QUALITY_API
+        value: https://auraq-quality-api.onrender.com

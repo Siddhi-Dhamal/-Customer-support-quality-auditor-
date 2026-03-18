@@ -1,14 +1,13 @@
 speaker,text
-Speaker 01,"Thank you for calling TechSupport, my name is Sarah. How can I help you today?"
-Speaker 00,"Hi Sarah, I am having trouble logging into my account. It keeps saying invalid password."
-Speaker 01,I am sorry to hear that. Can I please have your registered email address?
-Speaker 00,"Sure, it is john.smith@email.com"
-Speaker 01,Thank you John. I can see your account here. It looks like your account was locked after multiple failed login attempts.
-Speaker 00,"Oh no, I really need access urgently. I have an important meeting in an hour."
-Speaker 01,I completely understand how urgent this is. I will unlock your account right now and send a password reset link to your email.
-Speaker 00,"That would be amazing, thank you so much!"
-Speaker 01,Done! I have unlocked your account and the reset link has been sent. Please check your inbox in the next 2 minutes.
-Speaker 00,"I got the email and I am back in. You are a lifesaver, thank you Sarah!"
-Speaker 01,You are very welcome! Is there anything else I can help you with today?
-Speaker 00,"No that is all. You were very helpful, have a great day!"
-Speaker 01,Thank you for calling TechSupport. Have a wonderful day goodbye!
+Speaker 00,"Honestly, it's fine. We use spreadsheets mostly. It's free, and I don't really have time to train my team on something new."
+Speaker 01,"I totally understand. Transitioning tools is a headache. But usually, when I hear ""spreadsheets,"" it means you're spending more time cleaning data than selling. How many hours a week do you think you lose to data entry?"
+Speaker 00,"Probably 5-10 hours, honestly. But it's just too expensive to switch."
+Speaker 01,What if I told you that our automation feature saves the average user 8 hours a week? That pays for the software in the first month.
+Speaker 00,Maybe. But I don't think it integrates with our email system.
+Speaker 01,"It does, actually. We have a native integration for [Email Tool]. I can show you in a 5-minute screen share right now if you have a second?"
+Speaker 00,"Okay, 5 minutes. But no promises."
+Speaker 01,"*shares screen* As you can see, when you click here, it populates the client data automatically..."
+Speaker 00,"Wow, that is actually faster."
+Speaker 01,"It's a game-changer. Let’s get you on the Pro plan so you can automate those follow-ups, too. Does that work?"
+Speaker 00,"Send me the invoice, let's try it for a month."
+Speaker 01,"Perfect. Invoice sent. I'll also send a calendar link for your onboarding session. Welcome aboard, Mike!"
