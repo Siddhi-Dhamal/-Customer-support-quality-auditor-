@@ -36,10 +36,13 @@ services:
     name: auraq-frontend
     env: node
     plan: free
-    # root must contain the package.json and Vite config
     root: clean-project
-    buildCommand: cd clean-project && npm ci --include=dev && npm run build
-    publishPath: clean-project/dist
+    buildCommand: npm ci && npm run build
+    publishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
     envVars:
       - key: NPM_CONFIG_PRODUCTION
         value: "false"
