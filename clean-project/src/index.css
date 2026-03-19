@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 96%;
+
+    --card: 217 33% 17%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 220 35% 10%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 220 30% 6%;
+
+    --secondary: 217 33% 14%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 217 33% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 220 30% 6%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 220 30% 6%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 30% 6%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 14%;
+    --ring: 217 91% 60%;
+
+    --radius: 1rem;
+
+    --chart-1: 217 91% 60%;
+    --chart-2: 160 84% 39%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 271 81% 56%;
+    --chart-5: 350 70% 55%;
+    --chart-6: 187 92% 55%;
+
+    --sidebar-background: 220 35% 5%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 220 30% 6%;
+    --sidebar-accent: 217 33% 12%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 33% 14%;
+    --sidebar-ring: 217 91% 60%;
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/30 shadow-lg;
+  }
+
+  .glass-card-solid {
+    @apply bg-card backdrop-blur-xl border border-border/30;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.25), 0 0 60px hsl(var(--primary) / 0.08);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 20px hsl(var(--success) / 0.25), 0 0 60px hsl(var(--success) / 0.08);
+  }
+
+  .glow-warning {
+    box-shadow: 0 0 15px hsl(var(--warning) / 0.25);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.4), 0 0 80px hsl(var(--chart-4) / 0.15);
+  }
+
+  .score-bar {
+    @apply h-2.5 rounded-full overflow-hidden;
+    background: hsl(217 33% 12%);
+  }
+
+  .score-fill {
+    @apply h-full rounded-full transition-all duration-700 ease-out;
+  }
+
+  .score-fill-gradient-cyan {
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(187 92% 55%));
+    box-shadow: 0 0 12px hsl(var(--primary) / 0.5);
+  }
+
+  .score-fill-gradient-green {
+    background: linear-gradient(90deg, hsl(var(--success)), hsl(160 84% 55%));
+    box-shadow: 0 0 12px hsl(var(--success) / 0.5);
+  }
+
+  .score-fill-gradient-purple {
+    background: linear-gradient(90deg, hsl(var(--chart-4)), hsl(280 80% 65%));
+    box-shadow: 0 0 12px hsl(var(--chart-4) / 0.5);
+  }
+
+  .score-fill-gradient-amber {
+    background: linear-gradient(90deg, hsl(var(--warning)), hsl(45 100% 55%));
+    box-shadow: 0 0 12px hsl(var(--warning) / 0.5);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--chart-4)));
+  }
+
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(187 92% 55%));
+  }
+
+  .bg-mesh-gradient {
+    background-image:
+      radial-gradient(ellipse at 20% 50%, hsl(var(--primary) / 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, hsl(var(--chart-4) / 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, hsl(var(--success) / 0.04) 0%, transparent 50%);
+  }
+
+  .bg-hero-gradient {
+    background-image:
+      radial-gradient(ellipse at 30% 40%, hsl(var(--primary) / 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 60%, hsl(var(--chart-4) / 0.1) 0%, transparent 60%);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  .card-hover:hover {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.1);
+    transform: translateY(-1px);
+  }
+
+  .neon-border {
+    border: 1px solid hsl(var(--primary) / 0.3);
+    box-shadow: inset 0 0 20px hsl(var(--primary) / 0.05), 0 0 15px hsl(var(--primary) / 0.1);
+  }
+}
