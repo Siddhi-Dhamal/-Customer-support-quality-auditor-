@@ -2,6 +2,10 @@ import os
 import csv
 import pandas as pd
 from datetime import datetime
+from dotenv import load_dotenv
+from pathlib import Path
+
+load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env")  # goes up to root
 
 # --- DEEPGRAM V3.x IMPORTS ---
 from deepgram import DeepgramClient, PrerecordedOptions, FileSource
