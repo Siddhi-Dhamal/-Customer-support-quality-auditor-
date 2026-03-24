@@ -17,6 +17,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+@app.get("/health")
+async def health():
+    return {"status": "ok", "service": "AuraQ Combined Server"}
+
 # Include all routes from each server directly
 for route in audio_app.routes:
     app.router.routes.append(route)
@@ -27,10 +32,7 @@ for route in chat_app.routes:
 for route in scoring_app.routes:
     app.router.routes.append(route)
 
-@app.get("/")
-@app.get("/health")
-async def health():
-    return {"status": "ok", "service": "AuraQ Combined Server"}
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
